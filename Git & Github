@@ -49,3 +49,124 @@ git pull: Fetches and merges changes into your current branch
 Answer: Forking means creating a personal copy of someone else's repository. It allows you to experiment or make changes without affecting the original project.
 🔹 15. How can you revert a commit?
 Answer: Use git revert <commit_id> to undo a specific commit by creating a new commit that reverses the changes.
+
+
+Git & GitHub Interview Questions for Experienced Candidates
+
+1. How does Git internally manage its data?
+Answer: Git uses a content-addressable file system where every object (commit, tree, blob, tag) is stored in the .git/objects directory and referenced by a SHA-1 hash. The three main object types:
+Blob: File data
+Tree: Directory structure
+Commit: A snapshot of the repository at a point in time
+Git uses these snapshots to enable fast operations like branching and merging.
+2. What is the difference between rebase and merge? When would you use each?
+Answer: 
+git merge	git rebase
+Creates a merge commit	Rewrites commit history
+Preserves history	Makes history linear
+Preferred for public branches	Preferred for local/feature branches
+Use merge when preserving the complete history and context is important (e.g., shared branches).
+Use rebase to clean up commit history before merging to main (e.g., squash multiple WIP commits).
+3. What is a detached HEAD in Git?
+Answer: A detached HEAD occurs when you check out a commit instead of a branch. You're no longer on a branch, and changes made won't be saved to any branch unless explicitly created and committed to a new branch.
+4. How do you recover from an accidental commit to the wrong branch?
+Answer: 
+bash
+Copy
+Edit
+# Step 1: Switch to the correct branch
+git checkout correct-branch
+# Step 2: Cherry-pick the commit from the wrong branch
+git cherry-pick <commit-hash>
+# Step 3: Switch back and remove the commit
+git checkout wrong-branch
+git reset --hard HEAD~1  # Use with caution
+5. What are Git hooks? Have you used them?
+Answer: Git hooks are scripts that Git automatically executes before or after specific events (e.g., pre-commit, pre-push, post-merge). They are located in .git/hooks.
+Example use cases:
+Enforcing commit message format
+Running tests before pushing
+Preventing secrets from being committed
+6. How do you handle large binary files in Git?
+Answer: Git is inefficient with large binary files because it stores the full file each time it changes. Solutions include:
+Git LFS (Large File Storage): Stores pointers in Git, and files in a separate storage.
+Using .gitignore to exclude binaries entirely if not needed.
+7. What is the difference between origin/master and master?
+Answer: 
+master (or main) is your local branch.
+origin/master is a reference to the remote branch as it was when you last fetched or pulled.
+Use git fetch to update origin/master.
+8. How do you undo a git rebase?
+Answer: Use the reflog to find the commit before the rebase and reset:
+bash
+Copy
+Edit
+git reflog
+git reset --hard <commit-hash>
+9. How do you handle merge conflicts in GitHub during a pull request?
+Answer: Checkout the branch locally
+Merge the base branch into your feature branch:
+bash
+Copy
+Edit
+git checkout feature-branch
+git pull origin main  # or master
+Resolve conflicts manually
+Add and commit changes:
+bash
+Copy
+Edit
+git add .
+git commit
+git push origin feature-branch
+Return to GitHub and complete the pull request.
+10. What is the GitFlow workflow? Have you used it?
+Answer: GitFlow is a branching model with:
+main (production)
+develop (integration)
+Feature branches (feature/*)
+Release branches (release/*)
+Hotfix branches (hotfix/*)
+Pros: Structured release cycles
+Cons: Can be overkill for small teams or projects
+11. How do you squash commits in Git? Why is it useful?
+Answer:
+bash
+Copy
+Edit
+git rebase -i HEAD~n
+# Mark commits with "squash" or "s"
+Squashing combines multiple commits into one. It’s useful for:
+Keeping commit history clean
+Reducing noise before merging feature branches
+12. What is the difference between git stash and git commit?
+Answer:
+git stash: Temporarily stores changes without committing
+git commit: Records changes in the repo history permanently
+Use stash when you need to switch branches but aren't ready to commit.
+13. What is git bisect? How have you used it?
+Answer: git bisect helps find the commit that introduced a bug by binary search.
+Example:
+bash
+Copy
+Edit
+git bisect start
+git bisect bad
+git bisect good <commit-hash>
+Git checks out commits between them until the faulty commit is found.
+14. What are submodules in Git?
+Answer: A Git submodule is a repository inside another Git repository.
+Use when:
+You want to include an external repo in your project (e.g., shared libraries)
+Commands:
+bash
+Copy
+Edit
+git submodule add <repo-url>
+git submodule update --init --recursive
+15. How do you ensure code quality and collaboration on GitHub?
+Answer: Use pull requests with proper code reviews
+Set up branch protection rules
+Use GitHub Actions for CI/CD
+Implement code owners for mandatory reviewers
+Use semantic commits for meaningful history
