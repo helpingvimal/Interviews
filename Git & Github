@@ -1,0 +1,51 @@
+Essential Git and GitHub interview questions and answers tailored for freshers, covering the basics with clear explanations.
+🔹 1. What is Git?
+Answer: Git is a distributed version control system that allows developers to track changes in source code during software development. It helps in collaborating, reverting changes, and managing code history efficiently.
+🔹 2. What is GitHub?
+Answer: GitHub is a cloud-based hosting platform for Git repositories. It allows developers to store code online, collaborate with others, and manage projects using features like pull requests, issues, and GitHub Actions.
+🔹 3. What is the difference between Git and GitHub?
+Answer:
+Git	GitHub
+Version control tool	Hosting service for Git repositories
+Works offline	Requires internet to access
+Command-line tool	Web-based GUI with additional features
+🔹 4. What are the basic Git commands every developer should know?
+Answer:
+git init – Initialize a new Git repository
+git clone – Copy a remote repository
+git add – Add changes to staging
+git commit – Save changes with a message
+git push – Upload local changes to GitHub
+git pull – Download changes from GitHub
+git status – Show status of changes
+git log – View commit history
+🔹 5. What is a repository in Git?
+Answer: A repository (repo) is a project folder where Git tracks all changes. It can be local (on your system) or remote (hosted on GitHub).
+🔹 6. What is the purpose of git init?
+Answer: git init initializes a new Git repository in the current directory. It sets up the structure Git needs to track your project.
+🔹 7. What is the difference between git add and git commit?
+Answer: 
+git add stages your changes.
+git commit saves the staged changes with a commit message.
+🔹 8. What is a commit in Git?
+Answer: A commit is a snapshot of your code at a specific point. It includes a message that describes the changes made.
+🔹 9. What is a branch in Git?
+Answer: A branch is a separate line of development. The default branch is usually main or master. Developers use branches to work on features independently before merging into the main code.
+🔹 10. What is a pull request (PR)?
+Answer: A pull request is a GitHub feature used to propose changes to a repository. Team members can review and discuss the code before it is merged into the main branch.
+🔹 11. How do you resolve merge conflicts in Git?
+Answer: When two branches modify the same part of a file, Git cannot merge them automatically. To resolve:
+Open the conflicting file
+Edit the conflict markers (<<<<<<<, =======, >>>>>>>)
+Save the corrected version
+Use git add and git commit to finalize
+🔹 12. What is the .gitignore file?
+Answer:.gitignore file tells Git which files or directories to ignore and not track. Useful for excluding files like node_modules, .env, or logs.
+🔹 13. What is the difference between git fetch and git pull?
+Answer: 
+git fetch: Downloads changes but doesn't merge them automatically
+git pull: Fetches and merges changes into your current branch
+🔹 14. What is forking in GitHub?
+Answer: Forking means creating a personal copy of someone else's repository. It allows you to experiment or make changes without affecting the original project.
+🔹 15. How can you revert a commit?
+Answer: Use git revert <commit_id> to undo a specific commit by creating a new commit that reverses the changes.
